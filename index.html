@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrales El Alan</title>
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/all.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">∫ El Alan</div>
+            <button class="close-sidebar-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="menu">
+            <li onclick="changeModule('Integral definida')">Integral definida</li>
+            <li onclick="changeModule('Integral algebraica')">Integral algebraica</li>
+            <li onclick="changeModule('Integral seno')">Integral seno</li>
+            <li onclick="changeModule('Integral coseno')">Integral coseno</li>
+            <li onclick="changeModule('Integral tangente')">Integral tangente</li>
+            <li onclick="changeModule('Integral logaritmo')">Integral logaritmo</li>
+            <li onclick="changeModule('Integral exponencial')">Integral exponencial</li>
+            <li onclick="changeModule('Integral sustitución')">Integral sustitución</li>
+            <li onclick="changeModule('Integral por partes')">Integral por partes</li>
+            <li onclick="changeModule('Fracciones parciales')">Fracciones parciales</li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <header class="topbar animate-up">
+            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+            <h1 id="module-title">Integrales El Alan</h1>
+            <button class="theme-btn" onclick="toggleTheme()">☀️</button>
+        </header>
+
+        <section class="keyboard animate-up" style="animation-delay: 0.1s;">
+            <button onclick="insertMath('sin(')">sin</button>
+            <button onclick="insertMath('cos(')">cos</button>
+            <button onclick="insertMath('tan(')">tan</button>
+            <button onclick="insertMath('log(')">log</button>
+            <button onclick="insertMath('sqrt(')">√</button>
+            <button onclick="insertMath('exp(')">e^x</button>
+            <button onclick="insertMath('pi')">π</button>
+            <button onclick="insertMath('^')">^</button>
+            <button onclick="insertMath('/')">÷</button>
+            <button onclick="insertMath('*')">×</button>
+        </section>
+
+        <section class="card animate-up" style="animation-delay: 0.2s;">
+            <h2>Editor Matemático</h2>
+            <textarea id="integral-input" placeholder="Escribe tu función aquí. Ejemplo: sin(x) o x^2 + 2*x"></textarea>
+        </section>
+
+        <section class="buttons animate-up" style="animation-delay: 0.25s;">
+            <button class="solve-btn" onclick="solveIntegral()">Resolver</button>
+            <button class="clear-btn" onclick="clearAll()">Limpiar</button>
+            <button class="pdf-btn" onclick="exportPDF()">Exportar PDF</button>
+        </section>
+
+        <div id="pdf-report-container">
+            <section class="card animate-up" style="animation-delay: 0.3s;">
+                <h2>Método Detectado</h2>
+                <div id="method-box">Esperando análisis...</div>
+            </section>
+
+            <section class="card animate-up" style="animation-delay: 0.35s;">
+                <h2>Explicación Pedagógica</h2>
+                <div id="explanation-box">Aquí aparecerá la explicación teórica de los conceptos aplicados.</div>
+            </section>
+
+            <section class="card animate-up" style="animation-delay: 0.4s;">
+                <h2>Procedimiento Paso a Paso</h2>
+                <div id="steps-box">Aquí aparecerá el procedimiento matemático desglosado.</div>
+            </section>
+
+            <section class="card animate-up" style="animation-delay: 0.45s;" id="result-card">
+                <h2>Resultado Final</h2>
+                <div id="result-box"></div>
+            </section>
+        </div>
+
+        <section class="card animate-up" style="animation-delay: 0.5s;">
+            <h2>Historial Local</h2>
+            <ul id="history-list"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
